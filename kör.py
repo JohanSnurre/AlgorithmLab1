@@ -38,23 +38,27 @@ def penis(A):
 
 def bSort(A):
     ind = 1
+    #loop over elements [2:n] in A 
     while(ind < len(A)):
+        #set right- and left-bounds
         leftBound = 0
         rightBound = ind
 
 
-        
+        #seek out the correct index to place the element
         while(leftBound < rightBound):
             mid = (leftBound + rightBound)//2
+            print("left = " + str(leftBound) + ", right = " + str(rightBound))
             if(A[ind] < A[mid]):
-                rightBound = mid
+                rightBound = mid 
                 
 
             else:
                 leftBound = mid +1
                 
                 
-       
+        #moving all elements right of the inserted element
+        #one step to the right
         newInd = ind
         while(leftBound < newInd):
             elem = A[newInd]
@@ -63,7 +67,6 @@ def bSort(A):
             A[newInd] = elem
 
         ind+=1
-       
     return A
 
 
