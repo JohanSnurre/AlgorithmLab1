@@ -52,7 +52,7 @@ def bSort(A):
 
             else:
                 leftBound = mid +1
-                print("move left")
+                
                 
        
         newInd = ind
