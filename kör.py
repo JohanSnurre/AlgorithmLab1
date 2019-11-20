@@ -20,23 +20,27 @@ my_list = [8,2,1,3,5,4]
 
 
 def penis(A):
-    counter = 0
-    print(A)
+    
+    #print(A)
     for j in range(1,len(A)):
+        print(A)
         key = A[j]
         i = j-1;
         while(i>=0 and A[i]>key):
-            counter = counter+1
+            #counter = counter+1
             
             A[i+1] = A[i]
             i-= 1
+            print(A)
 
         A[i+1] = key
-        print(A)
-    print(counter)
-
+        
+    #print(counter)
+    return A
+    #return True
 
 def bSort(A):
+    counter = 0
     ind = 1
     #loop over elements [2:n] in A 
     while(ind < len(A)):
@@ -47,8 +51,9 @@ def bSort(A):
 
         #seek out the correct index to place the element
         while(leftBound < rightBound):
+            counter += 1
             mid = (leftBound + rightBound)//2
-            print("left = " + str(leftBound) + ", right = " + str(rightBound))
+            #print("left = " + str(leftBound) + ", right = " + str(rightBound))
             if(A[ind] < A[mid]):
                 rightBound = mid 
                 
@@ -61,32 +66,46 @@ def bSort(A):
         #one step to the right
         newInd = ind
         while(leftBound < newInd):
+            counter += 1
             elem = A[newInd]
             A[newInd] = A[newInd - 1]
             newInd -= 1
             A[newInd] = elem
 
         ind+=1
-    return A
-
+        
+    #return A
+    print (counter)
+    return True
 
 
 
 
 def merge(left,right):
-    leftSize = len(left)
-    rightSize = len(right)
-
+    leftPt = 0
+    rightPt = 0
     newList = []
 
-    while(leftSize > 0 or rightSide > 0):
-        if(left[leftSize] > right[rightSize]):
-            newList.append(left[leftSize])
+    while(leftPt < len(left) or rightPt < len(right)):
+        m = min(left[leftPt],right[rightPt])
+        newList.append(m)
 
-        
+        if(m == left[leftPt]):
+            leftPt += 1
+        else:
+            rightPt += 1
 
+        if(leftPt == len(left)):
+            for i in right[rightPt:]:
+                newList.append(i)
+            break
 
+        if(rightPt == len(right)):
+            for i in left[leftPt:]:
+                newList.append(i)
+            break
 
+    return newList
 
         
 
