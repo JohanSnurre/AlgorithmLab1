@@ -86,7 +86,7 @@ def merge(left,right):
     rightPt = 0
     newList = []
 
-    while(leftPt < len(left) or rightPt < len(right)):
+    while(True):
         m = min(left[leftPt],right[rightPt])
         newList.append(m)
 
@@ -113,7 +113,7 @@ def merge(left,right):
 
 def mergeSort(A,k):
     if(len(A)<=k):
-        penis(A)
+        bSort(A)
         return A
     
     left = mergeSort(A[:len(A)//2],k)
