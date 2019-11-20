@@ -111,16 +111,17 @@ def merge(left,right):
 
     
 
-def mergeSort(A):
-    if(len(A)==1):
+def mergeSort(A,k):
+    if(len(A)<=k):
+        penis(A)
         return A
-
-
-    leftSide = A[0:len(A)/2]
-    rightSide = A[len(A)/2:len(A)-1]
+    
+    left = mergeSort(A[:len(A)//2],k)
+    right = mergeSort(A[len(A)//2:],k)
 
     
-
+    return merge(left,right)
+    
 
 
 
