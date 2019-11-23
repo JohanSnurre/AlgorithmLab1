@@ -1,3 +1,5 @@
+import random
+import time
 
 
 def insertionSort(my_list):
@@ -14,33 +16,40 @@ def insertionSort(my_list):
 
     return my_list
 
-my_list = [8,2,1,3,5,4]
+F = []
+G = []
+H = []
+L = []
+for i in range(10000):
+    F.append(random.randint(0,10000))
+    G.append(random.randint(0,10000))
+    H.append(random.randint(0,10000))
+    L.append(random.randint(0,10000))
+    
 
+    
 
 
 
 def penis(A):
-    
-    #print(A)
+    #start = time.time()
     for j in range(1,len(A)):
-        print(A)
         key = A[j]
         i = j-1;
         while(i>=0 and A[i]>key):
-            #counter = counter+1
-            
             A[i+1] = A[i]
             i-= 1
-            print(A)
+            
 
         A[i+1] = key
-        
-    #print(counter)
-    return A
-    #return True
+
+   # end = time.time()
+    #print(end-start)
+    #return A
+    
 
 def bSort(A):
-    counter = 0
+    #start = time.time()
     ind = 1
     #loop over elements [2:n] in A 
     while(ind < len(A)):
@@ -51,7 +60,7 @@ def bSort(A):
 
         #seek out the correct index to place the element
         while(leftBound < rightBound):
-            counter += 1
+            #counter += 1
             mid = (leftBound + rightBound)//2
             #print("left = " + str(leftBound) + ", right = " + str(rightBound))
             if(A[ind] < A[mid]):
@@ -66,7 +75,7 @@ def bSort(A):
         #one step to the right
         newInd = ind
         while(leftBound < newInd):
-            counter += 1
+            #counter += 1
             elem = A[newInd]
             A[newInd] = A[newInd - 1]
             newInd -= 1
@@ -74,10 +83,10 @@ def bSort(A):
 
         ind+=1
         
-    #return A
-    print (counter)
-    return True
-
+   
+    #end = time.time()
+    #print(end-start)
+    return A
 
 
 
@@ -111,13 +120,33 @@ def merge(left,right):
 
     
 
-def mergeSort(A,k):
+def mergeSortB(A,k):
+
+    if(len(A) <= 1):
+        return A
+    
     if(len(A)<=k):
         bSort(A)
         return A
     
-    left = mergeSort(A[:len(A)//2],k)
-    right = mergeSort(A[len(A)//2:],k)
+    left = mergeSortB(A[:len(A)//2],k)
+    right = mergeSortB(A[len(A)//2:],k)
+
+    
+    return merge(left,right)
+
+
+def mergeSortIn(A,k):
+
+    if(len(A) <= 1):
+        return A
+    
+    if(len(A)<=k):
+        penis(A)
+        return A
+    
+    left = mergeSortIn(A[:len(A)//2],k)
+    right = mergeSortIn(A[len(A)//2:],k)
 
     
     return merge(left,right)
@@ -126,12 +155,47 @@ def mergeSort(A,k):
 
 
 
+def ms(A,k):
+    start = time.time()
+
+    mergeSortIn(A,k)
+
+    end = time.time()
+
+    return (end-start)
 
 
 
 
 
 
+def test(O):
+
+    l = (1000,1000)
+
+    for i in range(1,100):
+        m = ms(O,i)
+        if(m<=l[0]):
+            l = (m,i)
+
+    return l
+
+
+
+
+def averageTime():
+
+    t = 0
+    for i in range(20):
+        g = test(F)
+        t += g[1]
+
+    return t//20
+
+def genList(start,stop,step):
+
+    return list(range(start,stop,step))
+    
 
 
 
