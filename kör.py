@@ -20,13 +20,26 @@ F = []
 G = []
 H = []
 L = []
-for i in range(10000):
+for i in range(5555):
     F.append(random.randint(0,10000))
-    G.append(random.randint(0,10000))
-    H.append(random.randint(0,10000))
-    L.append(random.randint(0,10000))
+   
     
 
+
+for i in range(10000):
+    G.append(random.randint(0,10000))
+    
+    
+
+for i in range(25000):
+    H.append(random.randint(0,10000))
+   
+    
+
+for i in range(1000):
+    L.append(random.randint(0,10000))
+    
+    
     
 
 
@@ -158,7 +171,7 @@ def mergeSortIn(A,k):
 def ms(A,k):
     start = time.time()
 
-    mergeSortIn(A,k)
+    mergeSortB(A,k)
 
     end = time.time()
 
@@ -171,11 +184,11 @@ def ms(A,k):
 
 def test(O):
 
-    l = (0,1000)
+    l = (1000,1000)
 
     for i in range(1,100):
         m = ms(O,i)
-        if(m>=l[0]):
+        if(m<=l[0]):
             l = (m,i)
 
     return l
