@@ -171,11 +171,11 @@ def ms(A,k):
 
 def test(O):
 
-    l = (1000,1000)
+    l = (0,1000)
 
     for i in range(1,100):
         m = ms(O,i)
-        if(m<=l[0]):
+        if(m>=l[0]):
             l = (m,i)
 
     return l
@@ -183,11 +183,11 @@ def test(O):
 
 
 
-def averageTime():
+def averageK(A):
 
     t = 0
     for i in range(20):
-        g = test(F)
+        g = test(A)
         t += g[1]
 
     return t//20
